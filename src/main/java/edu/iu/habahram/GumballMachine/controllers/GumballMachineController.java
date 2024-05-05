@@ -61,4 +61,14 @@ public class GumballMachineController {
             throw new RuntimeException(e);
         }
     }
+
+    @PostMapping("/refill")
+    public ResponseEntity<?> refillMachine(@RequestBody RefillRequest request) {
+        GumballMachine machine = machineService.getMachine(request.getId());
+        if (machine == null) {
+            return ResponseEntity.notFound().build();
+        }
+        machine.refill(request.getCount());
+        return ResponseEntity.ok().build();
+    }
 }

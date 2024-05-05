@@ -5,9 +5,11 @@ public interface IGumballMachine {
     TransitionResult ejectQuarter();
     TransitionResult turnCrank();
     TransitionResult dispense();
-    void changeTheStateTo(GumballMachineState name);
+    void changeTheStateTo(GumballMachineState state);
     Integer getCount();
     String getTheStateName();
-
     void releaseBall();
+
+    // Adds a refill method that allows adding gumballs to the machine.
+    void refill(int count);
 }
